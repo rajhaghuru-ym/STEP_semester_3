@@ -1,0 +1,32 @@
+package class_problems;
+
+import java.util.Arrays;
+
+public class PodiumFinder {
+    public static int[] findTopThreeScores(int[] scores) {
+        int first = -1;
+        int second = -1;
+        int third = -1;
+
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] >= first) {
+                third = second;
+                second = first;
+                first = scores[i];
+            } else if (scores[i] >= second) {
+                third = second;
+                second = scores[i];
+            } else if (scores[i] >= third) {
+                third = scores[i];
+            }
+        }
+
+        return new int[]{first, second, third};
+    }
+
+    public static void main(String[] args) {
+        int[] scores = {45, 82, 79, 90, 33, 90, 61};
+        int[] topThree = findTopThreeScores(scores);
+        System.out.println(Arrays.toString(topThree));
+    }
+}
