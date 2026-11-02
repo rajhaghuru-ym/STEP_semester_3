@@ -1,0 +1,33 @@
+package assignment_problems;
+
+class ClassAttendanceTracker {
+
+    public static void attendanceSummary(int[] days) {
+        int totalPresent = 0;
+        int currentStreak = 0;
+        int longestStreak = 0;
+
+        for (int i = 0; i < days.length; i++) {
+            if (days[i] == 1) {
+                totalPresent = totalPresent + 1;
+                currentStreak = currentStreak + 1;
+
+                if (currentStreak > longestStreak) {
+                    longestStreak = currentStreak;
+                }
+            } else {
+                currentStreak = 0;
+            }
+        }
+
+        System.out.println("Present: " + totalPresent + ", Longest streak: " + longestStreak);
+    }
+
+    public static void main(String[] args) {
+        int[] days1 = {1, 1, 0, 1, 1, 1, 0, 1};
+        attendanceSummary(days1);
+
+        int[] days2 = {0, 0, 0};
+        attendanceSummary(days2);
+    }
+}
